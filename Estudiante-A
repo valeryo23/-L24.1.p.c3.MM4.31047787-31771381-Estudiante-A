@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Listado de estudiantes por semestre</title>
+
+</head>
+
+<body>
+
+    <input type="number" id="semestreInput"placeholder="Ingrese el semestre"> 
+
+    <button onclick="mostrarEstudiantes()">Mostrar Estudiantes</button> <div id="salida"></div> 
+
+    <script src="index.js"> 
+
+    </script>
+
+    
+
+</body>
+
+</html>
+
+
+//ESTUDIANTE-A 
+
+//Se tiene de varios estudiantes su nombre, semestre y nota.
+
+//También se sabe que la nota 
+
+//máxima es 20, y que los estudiantes aprueban con un mínimo de 10. 
+
+//Toda esta información de estudiantes se carga en un arreglo, 
+
+//y se necesita una función que retorne los estudiantes de un semestre dado. 
+
+//La estructura de un objeto estudiante es, p.ej.: 
+
+//{nombre: ‘Luis’, semestre: 5, nota: 14} 
+
+//Función: estudiantesSemestre. 
+
+//Parámetros: estudiantes (array de objetos estudiante), semestre (un número). 
+
+//Retorno: array de objetos estudiante que pertenecen al semestre indicado. 
+
+
+
+
+
+let estudiantes = [
+
+    { nombre: 'Luis', semestre: 5, nota: 14 },
+
+    { nombre: 'María', semestre: 4, nota: 16 },
+
+    { nombre: 'Juan', semestre: 5, nota: 12 },
+
+    { nombre: 'Ana', semestre: 3, nota: 18 },
+
+    { nombre: 'Carlos', semestre: 5, nota: 9 },
+
+];
+
+let estudiantesSemestre = (estudiantes, semestre) => {
+
+    let estudiantesSemestre = [];
+
+    estudiantes.filter((estudiante) => {
+
+        if (estudiante.semestre == semestre) {
+
+            estudiantesSemestre.push(estudiante);
+
+        }
+
+    });
+
+    return estudiantesSemestre;
+
+};
+
+
+
+    
+
+function mostrarEstudiantes() {
+
+let salida = document.getElementById('salida');
+
+let estudiantesSemestre5 = estudiantesSemestre(estudiantes,"nombre");
+
+salida.innerHTML = `  Estudiantes del semestre 5 <br>:`
+
+estudiantesSemestre5.forEach((estudiante) => {
+
+    salida.innerHTML += ` Nombre:${estudiante.nombre}, Semestre:${estudiante.semestre}, Nota:${estudiante.nota} <br>`;
+
+});
+
+
+
+}
+
